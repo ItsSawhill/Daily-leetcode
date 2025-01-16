@@ -1,0 +1,31 @@
+# LeetCode Problem: Climbing Stairs (ID: 70)
+# Difficulty: Easy
+# Topics: Dynamic Programming, Math
+#
+# Problem Description:
+# You are climbing a staircase. It takes n steps to reach the top.
+# Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+#
+# Example:
+# Input: n = 3
+# Output: 3
+# Explanation: There are three ways to climb to the top:
+# 1. 1 step + 1 step + 1 step
+# 2. 1 step + 2 steps
+# 3. 2 steps + 1 step
+#
+# Link to the problem: https://leetcode.com/problems/climbing-stairs/
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        # Initialize variables to track the number of ways to reach the last two steps
+        one, two = 1, 1
+
+        # Iterate through the steps, updating the number of ways dynamically
+        for i in range(n - 1):
+            temp = one  # Temporary variable to hold the previous value
+            one = one + two  # Update the current number of ways
+            two = temp  # Move the previous value to the next step
+
+        # Return the total number of ways to reach the nth step
+        return one
